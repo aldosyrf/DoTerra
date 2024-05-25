@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">33dp</item>
+        <item name="android:height">33dp</item>
+        <item name="marginHorizontal">8dp</item>
+        <item name="shapeAppearance">@style/App.Custom.shape.Indicator</item>
+        <item name="android:color">@color/hijaumuda</item>
+    </style>
+
+    <style name="App.Custom.shape.Indicator" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

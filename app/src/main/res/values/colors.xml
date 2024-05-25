@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="kuning">#FFD23F</color>
+    <color name="hijautua">#166140</color>
+    <color name="hijaumuda">#C6EBC5</color>
+    <color name="birumuda">#6EE5FF</color>
+</resources>

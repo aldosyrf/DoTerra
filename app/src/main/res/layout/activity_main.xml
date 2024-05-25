@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hijautua"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintVertical_weight="@integer/material_motion_duration_medium_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavView"
+        android:background="@drawable/bg_top_rounded_full_white"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        app:itemPaddingBottom="17dp"
+        android:layout_marginBottom="-50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
+        app:layout_constraintStart_toStartOf="@+id/frameLayout"
+        app:itemIconTint="@color/hijautua"
+        app:itemTextColor="@color/hijautua"
+        app:itemRippleColor="@color/white"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <View
+        android:id="@+id/view_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="@drawable/bg_under_rounded_full_white"
+        android:elevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="10dp"
+        android:text="MYTERRA"
+        android:textColor="@color/hijautua"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_top_bar"
+        app:layout_constraintStart_toStartOf="@+id/view_top_bar" />
+
+    <ImageButton
+        android:id="@+id/button_add_icon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/add_button"
+        android:contentDescription="@null"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_top_bar"
+        app:layout_constraintEnd_toEndOf="@+id/view_top_bar" />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1090707458757",
+    "firebase_url": "https://terrarium-f0b8a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "terrarium-f0b8a",
+    "storage_bucket": "terrarium-f0b8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090707458757:android:22e5599aba97d425affeac",
+        "android_client_info": {
+          "package_name": "com.doterra.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMGKeJ1msZ2TqR6j4UxaRQ0jDXNjPjfAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
