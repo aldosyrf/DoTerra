@@ -1,6 +1,8 @@
 package com.doterra.app
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +18,13 @@ class SplashActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val splashTimeOut = 3000
+        val intent = Intent(this, WelcomeActivity::class.java)
+        val handler = Handler()
+        handler.postDelayed({
+            startActivity(intent)
+            finish()
+        }, splashTimeOut.toLong())
     }
 }
