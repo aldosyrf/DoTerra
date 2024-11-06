@@ -13,6 +13,7 @@ class HomeFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private var isLampOn: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +30,28 @@ class HomeFragment : Fragment() {
         // Initialize Firebase Database
         database = FirebaseDatabase.getInstance().reference
 
-        // Get and update value from Firebase Realtime Database
+        // Listen to the value of the lamp control in the database
+        database.child("Control").child("lampu").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                isLampOn = snapshot.getValue(Boolean::class.java) ?: false
+                updateLampBackground()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle possible errors
+            }
+        })
+
+        // Set click listener to toggle lamp status
+        binding.bgLamp.setOnClickListener {
+            toggleLamp()
+        }
+
+        // Get and update sensor values from Firebase Realtime Database
         database.child("Sensor").child("temperature").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val temperature = snapshot.getValue(Int::class.java)
-                binding.temperatureValue.text = temperature.toString()
+                val temperature = (snapshot.getValue(Int::class.java)?.toString() ?: "N/A") + "\u00B0C"
+                binding.temperatureValue.text = temperature
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -43,8 +61,8 @@ class HomeFragment : Fragment() {
 
         database.child("Sensor").child("humidity").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val humidity = snapshot.getValue(Int::class.java)
-                binding.humidityValue.text = humidity.toString()
+                val humidity = (snapshot.getValue(Int::class.java)?.toString() ?: "N/A") + "%"
+                binding.humidityValue.text = humidity
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -54,14 +72,28 @@ class HomeFragment : Fragment() {
 
         database.child("Sensor").child("soilMoisture").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val soilMoisture = snapshot.getValue(Int::class.java)
-                binding.soilmoistureValue.text = soilMoisture.toString()
+                val soilMoisture = (snapshot.getValue(Int::class.java)?.toString() ?: "N/A") + "%"
+                binding.soilmoistureValue.text = soilMoisture
             }
 
             override fun onCancelled(error: DatabaseError) {
                 // Handle possible errors
             }
         })
+    }
+
+    private fun updateLampBackground() {
+        if (isLampOn) {
+            binding.bgLamp.setBackgroundResource(R.drawable.lamp_on)
+        } else {
+            binding.bgLamp.setBackgroundResource(R.drawable.lamp_off_black)
+        }
+    }
+
+    private fun toggleLamp() {
+        isLampOn = !isLampOn
+        database.child("Control").child("lampu").setValue(isLampOn)
+        updateLampBackground()
     }
 
     override fun onDestroyView() {

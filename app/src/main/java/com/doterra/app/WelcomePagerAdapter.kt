@@ -22,12 +22,17 @@ class WelcomePagerAdapter(private val context: Context) : RecyclerView.Adapter<W
         if (position == 1) { // Fragment at position 1 is fragment_welcome2
             val loginButton = holder.itemView.findViewById<AppCompatButton>(R.id.loginButton)
             loginButton?.setOnClickListener {
-                val intent = Intent(context, MainActivity::class.java)
+                val intent = Intent(context, LoginActivity::class.java)
                 context.startActivity(intent)
+            }
+
+            val registerButton = holder.itemView.findViewById<AppCompatButton>(R.id.button4)
+            registerButton?.setOnClickListener {
+                val intent2 = Intent(context, RegisterActivity::class.java)
+                context.startActivity(intent2)
             }
         }
     }
-
     override fun getItemCount(): Int = layouts.size
 
     override fun getItemViewType(position: Int): Int = layouts[position]
